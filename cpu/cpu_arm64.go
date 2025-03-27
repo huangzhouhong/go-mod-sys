@@ -49,6 +49,13 @@ func archInit() {
 		readARM64Registers()
 	case "linux", "netbsd", "openbsd":
 		doinit()
+	case "ios":
+		setMinimalFeatures()
+		ARM64.HasAES = true
+		ARM64.HasPMULL = true
+		ARM64.HasSHA1 = true
+		ARM64.HasSHA2 = true
+		ARM64.HasCRC32 = true
 	default:
 		// Many platforms don't seem to allow reading these registers.
 		setMinimalFeatures()
